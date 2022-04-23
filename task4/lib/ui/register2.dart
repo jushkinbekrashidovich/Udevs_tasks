@@ -27,8 +27,6 @@ class _RegisterPage2State extends State<RegisterPage2> {
               ),
               color: Colors.black,
             )),
-        backgroundColor: AppColors.white,
-        elevation: 0,
       ),
       body: Padding(
         padding: const EdgeInsets.only(top: 40, left: 15, right: 15),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 import '../../components/image_data.dart';
+import '../../routes/app_routes.dart';
 import '../../theme/app_text_styles.dart';
 
 class HomeBody extends StatefulWidget {
@@ -61,9 +62,16 @@ class ImageContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Image.asset(
-        imageData.imageAsset,
+    return GestureDetector(
+      onTap: () {
+        Navigator.of(context).pushNamed(
+          AppRoutes.photoexpanded,
+        );
+      },
+      child: Container(
+        child: Image.asset(
+          imageData.imageAsset,
+        ),
       ),
     );
   }

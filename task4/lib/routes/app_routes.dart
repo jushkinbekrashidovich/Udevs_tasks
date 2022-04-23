@@ -12,4 +12,5 @@ class AppRoutes {
   static const search = '/search';
   static const photodetails = '/photodetails';
   static const chatdetails = '/chatdetails';
+  static const photoexpanded = '/photoexpanded';
 }

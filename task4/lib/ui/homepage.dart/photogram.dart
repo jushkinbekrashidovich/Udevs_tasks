@@ -5,10 +5,10 @@ import 'package:task4/ui/chat/chat.dart';
 import 'package:task4/ui/profile.dart';
 import 'package:task4/ui/search/search.dart';
 
-import '../components/image_data.dart';
-import '../routes/app_routes.dart';
-import '../theme/app_text_styles.dart';
-import 'bodies/home_body.dart';
+import '../../components/image_data.dart';
+import '../../routes/app_routes.dart';
+import '../../theme/app_text_styles.dart';
+import '../bodies/home_body.dart';
 
 class PhotogramPage extends StatefulWidget {
   @override

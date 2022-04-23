@@ -21,8 +21,6 @@ class LoginPage extends StatelessWidget {
           ),
           color: Colors.black,
         )),
-        backgroundColor: AppColors.white,
-        elevation: 0,
       ),
       body: Padding(
         padding: const EdgeInsets.only(top: 40, left: 15, right: 15),
@@ -63,11 +61,10 @@ class LoginPage extends StatelessWidget {
                 button_color: Colors.black,
                 text_color: Colors.white,
                 onpressed: () {
-                  Navigator.pushNamed(
-                    context,
-                    AppRoutes.profile,
-                    arguments: controller.text.toString(),
-                  );
+                  Navigator.of(context).pushNamed(
+                        AppRoutes.home,
+
+                      );
                 },
               ),
               SizedBox(

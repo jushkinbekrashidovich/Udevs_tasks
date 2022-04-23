@@ -23,4 +23,22 @@ class AppTextStyles{
     fontSize: 47,
     fontWeight: FontWeight.w500,
   );
+  static const ktitle = TextStyle(
+    color: AppColors.black,
+    fontSize: 12,
+    fontWeight: FontWeight.bold,
+  );
+  static const username = TextStyle(
+    color: AppColors.black,
+    fontSize: 15,
+  );
+  static const userlink = TextStyle(
+    color: AppColors.black,
+    fontSize: 11,
+  );
+  static const appBarTitle = TextStyle(
+    color: AppColors.black,
+    fontSize: 20,
+    fontWeight: FontWeight.w600,
+  );
 }

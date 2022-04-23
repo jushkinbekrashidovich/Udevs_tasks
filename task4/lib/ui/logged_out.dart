@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:task4/components/user_infos.dart';
 import 'package:task4/routes/app_routes.dart';
 import 'package:task4/theme/app_text_styles.dart';
 
@@ -11,15 +10,8 @@ class LoggedOutPage extends StatefulWidget {
   @override
   State<LoggedOutPage> createState() => _LoggedOutPageState();
 }
-  
-  
+
 class _LoggedOutPageState extends State<LoggedOutPage> {
-
-  // List<UserDetails> models = [
-  //    UserDetails(
-
-  //    ),
-  // ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,7 +21,10 @@ class _LoggedOutPageState extends State<LoggedOutPage> {
           Expanded(
             flex: 8,
             child: Center(
-              child: Text('photogram', style: AppTextStyles.body,),
+              child: Text(
+                'photogram',
+                style: AppTextStyles.body,
+              ),
             ),
           ),
           Expanded(
@@ -68,17 +63,27 @@ class _LoggedOutPageState extends State<LoggedOutPage> {
                             title: 'KIRISH',
                             text_color: Colors.black,
                             button_color: Colors.white,
-                            onpressed: (){Navigator.pushNamed(context, AppRoutes.login);},
+                            onpressed: () {
+                              Navigator.of(context).pushNamed(
+                                AppRoutes.login,
+                              );
+                            },
                           ),
                         ),
-                        SizedBox(width: 6,),
+                        SizedBox(
+                          width: 6,
+                        ),
                         Expanded(
                           flex: 2,
                           child: Button(
                             title: 'RO\'YXATDAN O\'TISH',
                             text_color: Colors.white,
                             button_color: Colors.black,
-                            onpressed: (){Navigator.pushNamed(context, AppRoutes.register1);},
+                            onpressed: () {
+                              Navigator.of(context).pushNamed(
+                                AppRoutes.register1,
+                              );
+                            },
                           ),
                         ),
                       ],
@@ -93,5 +98,3 @@ class _LoggedOutPageState extends State<LoggedOutPage> {
     );
   }
 }
-
-

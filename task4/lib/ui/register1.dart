@@ -13,17 +13,16 @@ class RegisterPage1 extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         leading: GestureDetector(
-          onTap: (){
-            Navigator.pop(context);
-          },
+            onTap: () {
+              Navigator.pop(context);
+            },
             child: ImageIcon(
-          AssetImage(
-            'assets/Union.png',
-          ),
-          color: Colors.black,
-        )),
-        backgroundColor: AppColors.white,
-        elevation: 0,
+              AssetImage(
+                'assets/Union.png',
+              ),
+              color: Colors.black,
+            )),
+            
       ),
       body: Padding(
         padding: const EdgeInsets.only(top: 40, left: 15, right: 15),
@@ -65,7 +64,9 @@ class RegisterPage1 extends StatelessWidget {
                 button_color: Colors.black,
                 text_color: Colors.white,
                 onpressed: () {
-                  Navigator.pushNamed(context, AppRoutes.register2);
+                  Navigator.of(context).pushNamed(
+                    AppRoutes.register2,
+                  );
                 },
               ),
               SizedBox(

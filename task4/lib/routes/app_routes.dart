@@ -7,4 +7,9 @@ class AppRoutes {
   static const register2 = '/register2';
   static const login = '/login';
   static const profile = '/profile';
+  static const home = '/home';
+  static const chat = '/chat';
+  static const search = '/search';
+  static const photodetails = '/photodetails';
+  static const chatdetails = '/chatdetails';
 }

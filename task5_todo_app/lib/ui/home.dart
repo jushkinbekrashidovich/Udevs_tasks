@@ -136,19 +136,40 @@ class _HomePageState extends State<HomePage> {
           color: Colors.white,
           size: 50,
         ),
-        onPressed: () {},
-      ),
-      bottomSheet: BottomSheet(
-        onClosing: () {},
-        builder: (context) {
-          return Container(
-            height: MediaQuery.of(context).size.height*0.7,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.only(topLeft: Radius.circular(20),topRight: Radius.circular(20),)
-            ),
+        onPressed: () {
+          showBottomSheet(
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.vertical(top: Radius.circular(40))),
+            context: context,
+            builder: (BuildContext contex) {
+              return Container(
+                decoration: new BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: new BorderRadius.only(
+                        topLeft: const Radius.circular(10.0),
+                        topRight: const Radius.circular(10.0))),
+                height: MediaQuery.of(context).size.height * 0.7,
+              );
+            },
           );
         },
       ),
+      // bottomSheet: BottomSheet(
+      //   shape: RoundedRectangleBorder(
+      //     borderRadius: BorderRadius.circular(220),
+      //   ),
+      //   onClosing: () {},
+      //   builder: (context) {
+      // return Container(
+      //   decoration: new BoxDecoration(
+      //               color: Colors.white,
+      //               borderRadius: new BorderRadius.only(
+      //                   topLeft: const Radius.circular(10.0),
+      //                   topRight: const Radius.circular(10.0))),
+      //   height: MediaQuery.of(context).size.height*0.7,
+      // );
+      //   },
+      // ),
     );
   }
 }

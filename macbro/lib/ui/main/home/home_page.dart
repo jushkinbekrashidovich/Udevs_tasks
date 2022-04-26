@@ -180,8 +180,7 @@ class HomePage extends GetView<HomeController> {
         
               ],
             ),
-            Flexible(
-              flex: 1,
+            Expanded(
               child: GridView.builder(
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 5,

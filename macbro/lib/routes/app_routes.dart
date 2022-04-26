@@ -3,7 +3,7 @@ class AppRoutes {
 
   static const initial = '/';
   static const main = '/main';
-  // static const internetConnection = '/internet_connection';
-  // static const basket = '/basket';
+  static const verication = '/verification';
+  static const register = '/register';
   // static const detail = '/detail';
 }

@@ -3,10 +3,10 @@ import 'package:get/get.dart';
 import 'package:macbro/controller/main/profile/profile_controller.dart';
 import 'package:macbro/core/custom_widgets/custom_button/custom_button.dart';
 
-import '../../../routes/app_routes.dart';
+import '../../../../routes/app_routes.dart';
 
-class ProfilePage extends GetView<ProfileController> {
-  const ProfilePage({Key? key}) : super(key: key);
+class VerificationPage extends GetView<ProfileController> {
+  const VerificationPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +33,7 @@ class ProfilePage extends GetView<ProfileController> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: const [
                       Text(
-                        'Phone number',
+                        'Enter verification code',
                         style: TextStyle(
                           color: Color.fromARGB(255, 188, 187, 187),
                         ),
@@ -42,6 +42,7 @@ class ProfilePage extends GetView<ProfileController> {
                         height: 5,
                       ),
                       TextField(
+                        obscureText: true,
                         decoration: InputDecoration(
                           contentPadding: EdgeInsets.only(left: 14),
                           filled: true,
@@ -61,9 +62,8 @@ class ProfilePage extends GetView<ProfileController> {
               ),
               CustomButton(
                 onTap: () {
-                   Get.toNamed(
-                   AppRoutes.verication,
-                );
+                  Get.toNamed(
+                   AppRoutes.register);
                 },
                 child: const Text(
                   'Login',

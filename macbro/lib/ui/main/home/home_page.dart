@@ -58,7 +58,8 @@ class HomePage extends GetView<HomeController> {
             )
           ],
         ),
-        body: Column(
+        body: ListView(
+          physics: BouncingScrollPhysics(),
           children: [
             CarouselSlider(
               options: CarouselOptions(
@@ -102,60 +103,62 @@ class HomePage extends GetView<HomeController> {
                 ],
               ),
             ),
-            Flexible(
-              flex: 4,
+            SizedBox(
+              height: 258,
               child: ListView.separated(
+                padding: const EdgeInsets.only(left: 10, right: 10),
                 separatorBuilder: (context, index) => const SizedBox(
                   width: 10,
                 ),
                 itemCount: 3,
                 shrinkWrap: true,
-                primary: true,
                 scrollDirection: Axis.horizontal,
                 itemBuilder: ((context, index) {
-                  return Padding(
-                    padding: const EdgeInsets.only(left: 15),
-                    child: Container(
-                      width: 165.5,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                            height: 166,
-                            decoration: BoxDecoration(
-                              color: AppColors.white,
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                            child: Column(
-                              children: [
-                                Expanded(
-                                  flex: 1,
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.end,
-                                    children: [
-                                      IconButton(
-                                        onPressed: () {},
-                                        icon: const Icon(Icons.favorite_border),
-                                      ),
-                                    ],
-                                  ),
+                  return Container(
+                    width: 152.5,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Container(
+                          height: 166,
+                          decoration: BoxDecoration(
+                            color: AppColors.white,
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          child: Column(
+                            children: [
+                              Expanded(
+                                flex: 1,
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    IconButton(
+                                      onPressed: () {},
+                                      icon:
+                                          const Icon(Icons.favorite_border),
+                                    ),
+                                  ],
                                 ),
-                                Expanded(
+                              ),
+                              Expanded(
                                   flex: 10,
                                   child: Image.asset('assets/item.png')),
-                              ],
-                            ),
+                            ],
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 10),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: const[
-                                Text('Iphone 13 '),
-                                Text('9 884 000 uzs', style: TextStyle(color: Colors.blue),),
-                              ],
-                            ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 10),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: const [
+                              Text('Iphone 13 '),
+                              Text(
+                                '9 884 000 uzs',
+                                style: TextStyle(color: Colors.blue),
+                              ),
+                            ],
                           ),
+                        ),
                         // const  Expanded(
                         //   flex: 1,
                         //   child:  Padding(
@@ -167,42 +170,53 @@ class HomePage extends GetView<HomeController> {
                         //      padding: EdgeInsets.only(top: 0),
                         //      child: Text('9 884 000 uzs'),
                         //    )),
-                        ],
-                      ),
+                      ],
                     ),
                   );
                 }),
               ),
             ),
-            Row(
-              children: [
-                Text('Categories',style: AppTextStyles.bannerDetailTitle,),
-        
-              ],
-            ),
-            Expanded(
-              child: GridView.builder(
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 5,
-                  crossAxisSpacing: 5.0,
-                  mainAxisSpacing: 5.0,
-                ),
-                itemBuilder: (context, index){
-                  return Container(
-                     decoration: BoxDecoration(
-                       borderRadius: BorderRadius.circular(15),
-                       color: Colors.white,
-                       
-                     ),
-                     child: Column(
-                       children: [
-                         Image.asset('assets/item2.png'),
-                         Text('Apple'),
-                       ],
-                     ),
-                  );
-                },
+            Padding(
+              padding: const EdgeInsets.only(left: 10, bottom: 10),
+              child: Row(
+                children: const [
+                  Text(
+                    'Categories',
+                    style: AppTextStyles.bannerDetailTitle,
+                  ),
+                ],
               ),
+            ),
+            GridView.builder(
+              padding: EdgeInsets.only(left: 10, right: 10),
+              shrinkWrap: true,
+              itemCount: 10,
+              physics: const NeverScrollableScrollPhysics(),
+              primary: false,
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                crossAxisSpacing: 10,
+                mainAxisSpacing: 10,
+              ),
+              itemBuilder: (context, index) {
+                return Container(
+                  height: 166,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8),
+                    color: Colors.white,
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset('assets/item2.png'),
+                      const SizedBox(
+                        height: 5,
+                      ),
+                      const Text('Apple'),
+                    ],
+                  ),
+                );
+              },
             ),
           ],
         ),

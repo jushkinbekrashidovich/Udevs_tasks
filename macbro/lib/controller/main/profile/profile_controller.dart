@@ -4,5 +4,5 @@ import 'package:macbro/base/base_controller.dart';
 class ProfileController extends BaseController {
 
   
-  final TextEditingController controller = TextEditingController();
+ 
 }

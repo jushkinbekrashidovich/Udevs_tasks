@@ -1,4 +1,6 @@
 import 'package:get/get.dart';
+import 'package:macbro/ui/main/profile/detail/register.dart';
+import 'package:macbro/ui/main/profile/detail/verification.dart';
 
 import '../bindings/main_bindings.dart';
 import '../bindings/splash_bindings.dart';
@@ -18,10 +20,15 @@ class AppPages {
       page: () => const MainPage(),
       binding: MainBindings(),
     ),
-    // GetPage(
-    //   name: AppRoutes.internetConnection,
-    //   page: () => const InternetConnectionPage(),
-    // ),
+    GetPage(
+      name: AppRoutes.verication,
+      page: () => const VerificationPage(),
+    //  binding: MainBindings(),
+    ),
+    GetPage(
+      name: AppRoutes.register,
+      page: () => const RegisterPage(),
+    ),
     // GetPage(
     //   name: AppRoutes.detail,
     //   page: () => const DetailPage(),

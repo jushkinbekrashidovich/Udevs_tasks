@@ -11,7 +11,8 @@ class HomeController extends BaseController {
   //   update();
   // }
 
-  void setCounter(int index) => current.value = index;
+  void setCounter(int index)  {current.value = index;
+  update();}
 
  // int get count => _count;
 

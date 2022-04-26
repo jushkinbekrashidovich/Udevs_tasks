@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       theme: AppThemes.light,
       getPages: AppPages.pages,
       initialBinding: SplashBindings(),
-      
+      debugShowCheckedModeBanner: false,
     );
   }
 }

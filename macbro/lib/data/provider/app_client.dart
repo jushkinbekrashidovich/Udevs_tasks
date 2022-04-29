@@ -1,0 +1,121 @@
+import 'package:chuck_interceptor/chuck.dart';
+import 'package:dio_retry_plus/dio_retry_plus.dart';
+import 'package:flutter/foundation.dart';
+import 'package:get/get.dart';
+import 'package:retrofit/http.dart';
+import 'package:retrofit/retrofit.dart';
+import 'package:dio/dio.dart';
+
+import '../../base/base_functions.dart';
+import '../../core/constants/constants.dart';
+import '../../routes/app_routes.dart';
+import '../models/banners/banner_response.dart';
+import '../models/categories/categories_response.dart';
+import '../models/products/products_response.dart';
+import '../models/token/refresh_token_request.dart';
+import '../models/token/refresh_token_response.dart';
+import '../source/local_source.dart';
+
+part 'api_client.g.dart';
+
+@RestApi(baseUrl: AppConstants.baseUrl)
+abstract class ApiClient {
+  static Chuck alice = Chuck(
+    navigatorKey: AppConstants.navigatorKey,
+    showNotification: true,
+    showInspectorOnShake: false,
+    darkTheme: false,
+  );
+
+  static get getDio {
+    Dio dio = Dio(BaseOptions(followRedirects: false));
+
+    if (kDebugMode) {
+      /// chuck interceptor
+      dio.interceptors.add(alice.getDioInterceptor());
+
+      /// log
+      dio.interceptors.add(
+        LogInterceptor(
+          responseBody: true,
+          requestBody: true,
+          request: true,
+        ),
+      );
+    }
+
+    /// Tries the last error request again.
+    dio.interceptors.add(
+      RetryInterceptor(
+        dio: dio,
+        toNoInternetPageNavigator: () async =>
+            await Get.toNamed(AppRoutes.internetConnection),
+        accessTokenGetter: () => LocalSource.instance.getAccessToken(),
+        refreshTokenFunction: BaseFunctions.refreshToken,
+      ),
+    );
+
+    return dio;
+  }
+
+  static CancelToken cancelToken = CancelToken();
+
+  static ApiClient? _apiClient;
+
+  static ApiClient getInstance({String baseUrl = AppConstants.baseUrl}) {
+    if (_apiClient != null) {
+      return _apiClient!;
+    } else {
+      _apiClient = ApiClient(getDio, cancelToken, baseUrl);
+      return _apiClient!;
+    }
+  }
+
+  static void removeApiClient() {
+    _apiClient = null;
+  }
+
+  factory ApiClient(Dio dio, CancelToken cancelToken, String baseUrl) {
+    dio.options = BaseOptions(receiveTimeout: 30000, connectTimeout: 30000);
+    return _ApiClient(dio, baseUrl: baseUrl);
+  }
+
+  /// Get news list
+  @GET('news')
+  Future<BannersResponse> getBanners(
+    @Header('Shipper') String shipperId,
+    @Query('page') int page,
+    @Query('limit') int limit,
+  );
+
+  /// Get categories and products
+  @GET('category')
+  Future<CategoryResponse> getCategoryWithProduct(
+    @Header('Shipper') String shipperId,
+    @Query('page') int page,
+    @Query('limit') int limit,
+    @Query('with_products') bool withProducts,
+    @Query('all') bool all,
+  );
+
+  /// Get product info
+  @GET('product/{product_id}')
+  Future<Products> getProductDetail(
+    @Header('Shipper') String shipperId,
+    @Path('product_id') String productId,
+  );
+
+  /// Get all products
+  @GET('product')
+  Future<ProductsResponse> getProducts(
+    @Header('Shipper') String shipperId,
+    @Query('search') String search,
+    @Query('page') int page,
+    @Query('limit') int limit,
+  );
+
+  @GET('customers/refresh-token')
+  Future<RefreshTokenResponse> refreshToken(
+    @Body() RefreshTokenRequest request,
+  );
+}

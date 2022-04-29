@@ -110,7 +110,7 @@ class HomePage extends GetView<HomeController> {
                 separatorBuilder: (context, index) => const SizedBox(
                   width: 10,
                 ),
-                itemCount: 3,
+                itemCount: controller.banners.length ,
                 shrinkWrap: true,
                 scrollDirection: Axis.horizontal,
                 itemBuilder: ((context, index) {
@@ -142,7 +142,7 @@ class HomePage extends GetView<HomeController> {
                               ),
                               Expanded(
                                   flex: 10,
-                                  child: Image.asset('assets/item.png')),
+                                  child: Image.asset(controller.banners[index]['image'])),
                             ],
                           ),
                         ),
@@ -190,7 +190,7 @@ class HomePage extends GetView<HomeController> {
             GridView.builder(
               padding: EdgeInsets.only(left: 10, right: 10),
               shrinkWrap: true,
-              itemCount: 10,
+              itemCount: controller.categories.length,
               physics: const NeverScrollableScrollPhysics(),
               primary: false,
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(

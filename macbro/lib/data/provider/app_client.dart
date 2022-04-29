@@ -5,7 +5,6 @@ import 'package:get/get.dart';
 import 'package:retrofit/http.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:dio/dio.dart';
-
 import '../../base/base_functions.dart';
 import '../../core/constants/constants.dart';
 import '../../routes/app_routes.dart';

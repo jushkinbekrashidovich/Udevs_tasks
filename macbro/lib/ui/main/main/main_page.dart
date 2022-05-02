@@ -1,70 +1,84 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:macbro/core/theme/app_text_style.dart';
+import 'package:macbro/controller/main/main_controller.dart';
+import 'package:macbro/ui/main/basket/basket_page.dart';
+import 'package:macbro/ui/main/favourite/favourite_page.dart';
+import 'package:macbro/ui/main/home/home_page.dart';
 import 'package:macbro/ui/main/profile/profile_page.dart';
 
-import '../../../controller/main/main_controller.dart';
-import '../../../core/theme/app_colors.dart';
-import '../favorites/favorites_page.dart';
-import '../home/home_page.dart';
-import '../orders/orders_page.dart';
-
 class MainPage extends GetView<MainController> {
-  const MainPage({ Key? key }) : super(key: key);
+  const MainPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return GetBuilder<MainController>(
-      builder: (controller) {
-        return Scaffold(
-          body: IndexedStack(
-               index: controller.bottomMenu.index,
-          children:  [
-            HomePage(),
-           const MyOrdersPage(),
-           const MyFavoritesPage(),
-           const ProfilePage(),
-          ],
-          ),
-          bottomNavigationBar: BottomNavigationBar(
-            unselectedItemColor: AppColors.unselectedBottomNavItem,
-          selectedItemColor: AppColors.assets,
-          onTap: (pos)=>controller.setMenu(BottomMenu.values[pos]),
-          currentIndex: controller.bottomMenu.index,
-          type: BottomNavigationBarType.fixed,
-          backgroundColor: AppColors.white,
-          selectedLabelStyle: AppTextStyles.selectedLabelStyle,
-          unselectedLabelStyle: AppTextStyles.unselectedLabelStyle,
-          elevation: 8,
-          items: [
-              _bottomNavigationBarItem(activeIcon: 'ic_active_home', icon: 'ic_home', label: 'home'.tr),
-              _bottomNavigationBarItem(activeIcon: 'ic_active_buy', icon: 'ic_buy', label: 'my orders'.tr),
-              _bottomNavigationBarItem(activeIcon: 'ic_active_favorite', icon: 'ic_favorite', label: 'favorites'.tr),
-              _bottomNavigationBarItem(activeIcon: 'ic_active_profile', icon: 'ic_profile', label: 'profile'.tr),
-          ],
-          ),
-          
-        );
-      }
-    );
+        builder: (controller) => Scaffold(
+              body: IndexedStack(
+                index: controller.bottomMenu.index,
+                children: const [
+                  HomePage(),
+                  Profile(),
+                  Basket(),
+                  Favourite(),
+                ],
+              ),
+              bottomNavigationBar: BottomNavigationBar(
+                onTap: (pos) => controller.setMenu(BottomMenu.values[pos]),
+                currentIndex: controller.bottomMenu.index,
+                type: BottomNavigationBarType.fixed,
+                backgroundColor: Colors.white,
+                selectedLabelStyle: const TextStyle(
+                  color: Colors.blue,
+                  fontSize: 10,
+                  fontWeight: FontWeight.w500,
+                ),
+                unselectedLabelStyle: const TextStyle(
+                  fontSize: 10,
+                  fontWeight: FontWeight.w500,
+                ),
+                elevation: 8,
+                items: [
+                  _bottomNavigationBarItem(
+                    icon: 'home',
+                    label: 'Home',
+                    activeIcon: 'home_active',
+                  ),
+                  _bottomNavigationBarItem(
+                    icon: 'basket',
+                    label: 'Basket',
+                    activeIcon: 'basket_active',
+                  ),
+                  _bottomNavigationBarItem(
+                    icon: 'favourite',
+                    label: 'Favourite',
+                    activeIcon: 'favourite_active',
+                  ),
+                  _bottomNavigationBarItem(
+                    icon: 'user',
+                    label: 'Profile',
+                    activeIcon: 'user_active',
+                  ),
+                ],
+              ),
+            ));
   }
-}
 
-_bottomNavigationBarItem({
+  _bottomNavigationBarItem({
     required String activeIcon,
     required String icon,
     required String label,
   }) {
     return BottomNavigationBarItem(
       icon: Padding(
-        padding: const EdgeInsets.only(bottom: 4),
-        child: SvgPicture.asset('assets/svg/$icon.svg'),
-      ),
+          padding: const EdgeInsets.only(bottom: 4),
+          child: SvgPicture.asset('assets/svg/$icon.svg')),
       activeIcon: Padding(
-        padding: const EdgeInsets.only(bottom: 4),
-        child: SvgPicture.asset('assets/svg/$activeIcon.svg'),
-      ),
+          padding: const EdgeInsets.only(bottom: 4),
+          child: SvgPicture.asset('assets/svg/$activeIcon.svg')),
       label: label,
     );
   }
+}

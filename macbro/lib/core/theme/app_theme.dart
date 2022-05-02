@@ -29,7 +29,7 @@ class AppThemes {
     ),
     pageTransitionsTheme: const PageTransitionsTheme(
       builders: {
-        // TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
+        TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
         TargetPlatform.android: CupertinoPageTransitionsBuilder(),
       },
     ),
@@ -40,7 +40,7 @@ class AppThemes {
         statusBarColor: Colors.transparent,
         systemNavigationBarColor: Colors.transparent,
         // ios
-        //statusBarBrightness: Brightness.light,
+        statusBarBrightness: Brightness.light,
         // android
         statusBarIconBrightness: Brightness.dark,
         systemNavigationBarIconBrightness: Brightness.dark,
@@ -88,7 +88,7 @@ class AppThemes {
     // ),
     pageTransitionsTheme: const PageTransitionsTheme(
       builders: {
-       // TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
+        TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
         TargetPlatform.android: CupertinoPageTransitionsBuilder(),
       },
     ),

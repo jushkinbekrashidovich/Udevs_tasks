@@ -1,4 +1,4 @@
-import 'package:macbro/base/base_controller.dart';
+import '../../base/base_controller.dart';
 
 class MainController extends BaseController {
   BottomMenu _bottomMenu = BottomMenu.home;
@@ -11,4 +11,4 @@ class MainController extends BaseController {
   BottomMenu get bottomMenu => _bottomMenu;
 }
 
-enum BottomMenu { home, myOrders, favorites, profile,  }
+enum BottomMenu { home, basket, favourite ,profile }

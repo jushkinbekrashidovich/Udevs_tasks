@@ -47,7 +47,7 @@ class AppTextStyles {
   );
   static const bannerDetailTitle = TextStyle(
     color: Colors.black,
-    fontSize: 23,
+    fontSize: 17,
     fontWeight: FontWeight.w600,
   );
 
@@ -330,23 +330,5 @@ class AppTextStyles {
     color: AppColors.white,
     fontSize: 20,
     fontWeight: FontWeight.w700,
-  );
-  static const selectedLabelStyle = TextStyle(
-    fontSize: 10,
-    fontWeight: FontWeight.w500,
-  );
-  static const unselectedLabelStyle = TextStyle(
-    fontSize: 10,
-    fontWeight: FontWeight.w500,
-  );
-  static const splashtitle = TextStyle(
-    color: AppColors.black,
-    fontSize: 50,
-    fontWeight: FontWeight.bold,
-  );
-  static const splashsubtitle = TextStyle(
-    color: AppColors.black,
-    fontSize: 25,
-    fontWeight: FontWeight.w500,
   );
 }

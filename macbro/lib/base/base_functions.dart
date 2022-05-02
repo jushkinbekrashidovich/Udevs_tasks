@@ -1,11 +1,10 @@
 import 'dart:io';
 
 import 'package:intl/intl.dart';
-import 'package:macbro/data/models/token/refresh_token_request.dart';
-import 'package:macbro/data/models/token/refresh_token_response.dart';
-import 'package:macbro/data/repository/refresh/refresh_token_repository.dart';
+import '../data/models/token/refresh_token_request.dart';
+import '../data/models/token/refresh_token_response.dart';
+import '../data/repository/refresh/refresh_token_repository.dart';
 
-import '../data/source/local_source.dart';
 
 class BaseFunctions {
   BaseFunctions._();
@@ -40,19 +39,19 @@ class BaseFunctions {
     }
   }
 
-  static Future<void> refreshToken() async {
-    var request = RefreshTokenRequest(
-      refreshToken: LocalSource.instance.getRefreshToken(),
-    );
-    final refreshTokenRepository = RefreshTokenRepository();
-    final result = await refreshTokenRepository.refreshToken(request: request);
-    if (result is RefreshTokenResponse) {
-      await LocalSource.instance.setRefreshedTokens(
-        refreshToken: result.refreshToken,
-        accessToken: result.accessToken,
-      );
-    }
-  }
+  // static Future<void> refreshToken() async {
+  //   var request = RefreshTokenRequest(
+  //     refreshToken: LocalSource.instance.getRefreshToken(),
+  //   );
+  //   final refreshTokenRepository = RefreshTokenRepository();
+  //   final result = await refreshTokenRepository.refreshToken(request: request);
+  //   if (result is RefreshTokenResponse) {
+  //     await LocalSource.instance.setRefreshedTokens(
+  //       refreshToken: result.refreshToken,
+  //       accessToken: result.accessToken,
+  //     );
+  //   }
+  // }
 
 // static String getStringByLanguage(Title value) {
 //   var lang = GetStorage().read<String>('locale') ?? 'ru';
@@ -65,4 +64,3 @@ class BaseFunctions {
 //   }
 // }
 }
-  

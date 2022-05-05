@@ -24,6 +24,15 @@ class HomeController extends BaseController
   int _index = 0;
   final scrollController = ScrollController();
 
+   RxInt current = 0.obs;
+
+  void setCounter(int index)  {current.value = index;
+  update();
+  
+  }
+
+  RxInt get counter => current;
+
   @override
   void onInit() {
     super.onInit();

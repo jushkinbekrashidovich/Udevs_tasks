@@ -47,8 +47,8 @@ class AppTextStyles {
   );
   static const bannerDetailTitle = TextStyle(
     color: Colors.black,
-    fontSize: 17,
-    fontWeight: FontWeight.w600,
+    fontSize: 23,
+    fontWeight: FontWeight.bold,
   );
 
   static const bannerDetailDescription = TextStyle(

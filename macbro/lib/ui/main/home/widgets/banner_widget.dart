@@ -13,13 +13,16 @@ class BannerWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<HomeController>(
       builder: (controller) => Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
+        padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 7),
         child: CarouselSlider.builder(
+          
           options: CarouselOptions(
-            height: 180.h,
-            autoPlay: false,
+            onPageChanged: (index, reason) =>
+                      controller.setCounter(index),
+            height: 190,
+            autoPlay: true,
             viewportFraction: 1,
-            autoPlayInterval: const Duration(seconds: 1),
+            autoPlayInterval: const Duration(seconds: 3),
           ),
           itemCount: controller.banners.length,
           itemBuilder: (context, index, realIndex) {

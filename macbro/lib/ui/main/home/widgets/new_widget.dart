@@ -9,7 +9,7 @@ class NewWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 300,
+      height: 250,
       child: GetBuilder<HomeController>(
         builder: (controller) => ListView.separated(
           padding: EdgeInsets.only(left: 12, right: 12),

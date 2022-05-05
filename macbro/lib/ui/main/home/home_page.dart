@@ -4,13 +4,18 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:macbro/controller/main/home/home_controller.dart';
 import 'package:macbro/core/theme/app_colors.dart';
+import 'package:macbro/data/models/category/category_response.dart';
+import 'package:macbro/ui/main/home/widgets/baner_counter.dart';
 import 'package:macbro/ui/main/home/widgets/banner.dart';
+import 'package:macbro/ui/main/home/widgets/banner_and_news_separate.dart';
 import 'package:macbro/ui/main/home/widgets/banner_widget.dart';
-import 'package:macbro/ui/main/home/widgets/categories.dart';
 import 'package:macbro/ui/main/home/widgets/discounts.dart';
 import 'package:macbro/ui/main/home/widgets/featured.dart';
+import 'package:macbro/ui/main/home/widgets/gridview.dart';
 import 'package:macbro/ui/main/home/widgets/new.dart';
 import 'package:macbro/ui/main/home/widgets/new_widget.dart';
+
+import '../../../core/theme/app_text_style.dart';
 
 class HomePage extends GetView<HomeController> {
   const HomePage({Key? key}) : super(key: key);
@@ -44,10 +49,22 @@ class HomePage extends GetView<HomeController> {
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
+          children: const [
             BannerWidget(),
-            SizedBox(height: 20),
+            BannerCounter(),
+            SizedBox(height: 30),
+            SeparateBanner(),
+            SizedBox(height: 10),
             NewWidget(),
+             Padding(
+               padding: const EdgeInsets.only(left: 10,),
+               child: Text(
+                 'Категории',
+                 style: AppTextStyles.bannerDetailTitle,
+               ),
+             ),
+            SizedBox(height: 10),
+            GridviewPage(),
           ],
         ),
       ),
